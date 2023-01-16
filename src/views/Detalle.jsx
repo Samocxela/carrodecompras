@@ -2,11 +2,18 @@
 import { useContext} from "react";
 import { dataContext } from "../context/DataContext";
 import Button from 'react-bootstrap/Button';
+import { useParams } from "react-router-dom";
 const Detalle = () => {
-    const { pizzaSeleccionada,addProduct } = useContext(dataContext);
+    const { pizzaSeleccionada,addProduct,data } = useContext(dataContext);
+    const {id}=useParams();
+    const pizzaPorParams= data.filter(pizza => pizza.id === id)
+    let pizza = []
+    pizzaSeleccionada.length > 0 ? pizza = pizzaSeleccionada : pizza = pizzaPorParams
+    console.log(id);
+
+ 
     
-    
-    return pizzaSeleccionada.map((pizza,i)=>{
+    return pizza.map((pizza,i)=>{
     
       return(
       <div key={i} className="contenedor_horizontal">

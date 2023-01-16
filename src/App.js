@@ -12,6 +12,7 @@ import CartView from './views/CartView';
 
 function App() {
  
+
   return (
     <div className="App">
       <DataProvider>

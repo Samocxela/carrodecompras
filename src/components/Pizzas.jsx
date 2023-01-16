@@ -9,7 +9,8 @@ import { useNavigate } from "react-router-dom";
 const Pizzas = () => {
   const { data, setPizzaSelecionada, addProduct } = useContext(dataContext);
   const navigate = useNavigate();
- 
+
+
 
   
   const verMas = (pizzaSeleccionada) => {
