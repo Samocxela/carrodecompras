@@ -4,28 +4,32 @@ import "../assets/css/cart.css";
 import CantidadPizza from "./CantidadPizza";
 
 const Cart = () => {
-  const { cart,setCart,setCantidad } = useContext(dataContext);
-  
-  const eliminarPizza = (id)=>{
-    const foundId = cart.find((ele)=>ele.id ===id);
-    
-    const newCart = cart.filter((ele)=>{
-      setCantidad((foundId.cantidad=1))
-      return ele !== foundId;
-    })
-    setCart(newCart);
-  }
+  const { cart, setCart, setCantidad } = useContext(dataContext);
 
+  const eliminarPizza = (id) => {
+    const foundId = cart.find((ele) => ele.id === id);
+
+    const newCart = cart.filter((ele) => {
+      setCantidad((foundId.cantidad = 1));
+      return ele !== foundId;
+    });
+    setCart(newCart);
+  };
 
   return cart.map((pizza, i) => {
     return (
-      <div  key={i} >
+      <div key={i}>
         <div className="cartContent">
           <img className="pequeña" src={pizza.img} alt="i-pizza" />
           <p>{pizza.name.toUpperCase()}</p>
-          <CantidadPizza pizza={pizza}/>
+          <CantidadPizza pizza={pizza} />
           <p>${pizza.price * pizza.cantidad}</p>
-          <h3 className="boton-eliminar" onClick={()=>eliminarPizza(pizza.id)}>❌</h3>
+          <h3
+            className="boton-eliminar"
+            onClick={() => eliminarPizza(pizza.id)}
+          >
+            ❌
+          </h3>
         </div>
       </div>
     );

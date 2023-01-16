@@ -1,4 +1,3 @@
-
 import "../assets/css/home.css";
 import Banner from "../components/Banner";
 import Footer from "../components/Footer";
@@ -10,8 +9,7 @@ export default function Home() {
       <div className="pizza-card-container">
         <Pizzas />
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
-  

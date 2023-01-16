@@ -6,48 +6,46 @@ const DataProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [cart, setCart] = useState([]);
   const [pizzaSeleccionada, setPizzaSelecionada] = useState([]);
-  const [cantidad,setCantidad]=useState(1)
+  const [cantidad, setCantidad] = useState(1);
 
   const getPizzas = async () => {
     const resp = await fetch("/pizzas.json");
     let data = await resp.json();
-   
-    data = data.map((elePizza)=>({
-      
-      desc:elePizza.desc,
-      id:elePizza.id,
-      img:elePizza.img,
-      ingredients:elePizza.ingredients,
-      name:elePizza.name,
-      price:elePizza.price,
-      cantidad:1
-    }))
 
+    data = data.map((elePizza) => ({
+      desc: elePizza.desc,
+      id: elePizza.id,
+      img: elePizza.img,
+      ingredients: elePizza.ingredients,
+      name: elePizza.name,
+      price: elePizza.price,
+      cantidad: 1,
+    }));
 
     console.log(data);
     setData(data);
   };
 
   const addProduct = (pizza) => {
-    const repeat = cart.some((ele)=> ele.id === pizza.id);
-    if (repeat){
+    const repeat = cart.some((ele) => ele.id === pizza.id);
+    if (repeat) {
       const nuevaCantPizza = [pizza];
-      nuevaCantPizza.map((ele)=>{
+      nuevaCantPizza.map((ele) => {
         setCantidad((ele.cantidad += 1));
-        return setCart(cart,{...pizza,cantidad:cantidad})
-      })
-    }
-    else{
+        return setCart(cart, { ...pizza, cantidad: cantidad });
+      });
+    } else {
       setCart([...cart, pizza]);
       console.log(pizza);
     }
-   
   };
-  
-  const total = cart.reduce((acc, elemento) => acc + elemento.price * elemento.cantidad, 0);
+
+  const total = cart.reduce(
+    (acc, elemento) => acc + elemento.price * elemento.cantidad,
+    0
+  );
 
   useEffect(() => {
-   
     getPizzas();
   }, []);
 
@@ -63,7 +61,7 @@ const DataProvider = ({ children }) => {
         addProduct,
         total,
         cantidad,
-        setCantidad
+        setCantidad,
       }}
     >
       {children}
