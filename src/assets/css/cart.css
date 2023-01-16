@@ -1,0 +1,30 @@
+
+.cartContent{
+   
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 30px;
+    border: 2px solid black;
+}
+
+.cartContent > img {
+    height: 70px;
+    width: 70px;
+    text-align: center;
+}
+
+.cartTotal{
+    text-align: center;
+}
+.counter-button{
+    cursor:pointer;
+    font-weight: bold;
+}
+.counter-value{
+    margin-top: 20px;
+}
+.boton-eliminar{
+     cursor: pointer;
+}
